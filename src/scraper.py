@@ -1,11 +1,11 @@
 import asyncio
 import random
-from urllib.parse import urlencode, urlparse
+from urllib.parse import urlencode
+from typing import Dict, List
 
 from apify import Actor
 from bs4 import BeautifulSoup
 from playwright.async_api import async_playwright, Page
-from typing import Dict, List
 
 from src.config import REAL_USER_AGENT, VIEWPORT
 
@@ -80,6 +80,7 @@ class ImmobiliareScraper:
         await asyncio.sleep(random.uniform(min_sec, max_sec))
 
     async def extract_listing_links(self, page: Page) -> List[str]:
+        """Estrae i link degli annunci dalla pagina lista."""
         selectors = [
             ".in-card",
             ".nd-list__item.in-realEstateResults__item",
@@ -112,6 +113,7 @@ class ImmobiliareScraper:
         return links
 
     async def scrape_listing(self, context, url: str) -> None:
+        """Apre un annuncio e ne estrae i dati principali."""
         page = await context.new_page()
         try:
             await page.goto(url, wait_until="networkidle", timeout=30000)
@@ -141,17 +143,8 @@ class ImmobiliareScraper:
         Actor.log.info(f"🏁 URL iniziale: {start_url}")
 
         async with async_playwright() as p:
-            proxy_config = await Actor.create_proxy_configuration(groups=["RESIDENTIAL"])
-            proxy_url = await proxy_config.new_url()
-            parsed = urlparse(proxy_url)
-
             browser = await p.chromium.launch(
                 headless=True,
-                proxy={
-                    "server": f"{parsed.scheme}://{parsed.hostname}:{parsed.port}",
-                    "username": parsed.username,
-                    "password": parsed.password,
-                },
                 args=["--disable-blink-features=AutomationControlled"],
             )
 
