@@ -1,9 +1,10 @@
 import asyncio
 import random
-from urllib.parse import urlencode
+from urllib.parse import urlencode, urlparse
 from typing import Dict, List
 
 from apify import Actor
+from apify_client._errors import ApifyApiError
 from bs4 import BeautifulSoup
 from playwright.async_api import async_playwright, Page
 
@@ -143,10 +144,30 @@ class ImmobiliareScraper:
         Actor.log.info(f"🏁 URL iniziale: {start_url}")
 
         async with async_playwright() as p:
-            browser = await p.chromium.launch(
-                headless=True,
-                args=["--disable-blink-features=AutomationControlled"],
-            )
+            browser_kwargs = {
+                "headless": True,
+                "args": ["--disable-blink-features=AutomationControlled"],
+            }
+
+            # Configura Apify Proxy (RESIDENTIAL) con full permissions
+            try:
+                proxy_config = await Actor.create_proxy_configuration(groups=["RESIDENTIAL"])
+                proxy_url = await proxy_config.new_url()
+                parsed = urlparse(proxy_url)
+
+                browser_kwargs["proxy"] = {
+                    "server": f"{parsed.scheme}://{parsed.hostname}:{parsed.port}",
+                    "username": parsed.username,
+                    "password": parsed.password,
+                }
+                Actor.log.info(f"✅ Proxy Apify configurato: {proxy_url}")
+            except ApifyApiError as e:
+                Actor.log.warning(
+                    f"⚠️ Impossibile usare Apify Proxy: {e}. "
+                    "Procedo senza proxy (rischio CAPTCHA/IP block più alto)."
+                )
+
+            browser = await p.chromium.launch(**browser_kwargs)
 
             context = await browser.new_context(
                 viewport=VIEWPORT,

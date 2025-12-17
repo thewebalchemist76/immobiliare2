@@ -4,4 +4,4 @@ REAL_USER_AGENT = (
     "Chrome/120.0.0.0 Safari/537.36"
 )
 
-VIEWPORT = {"width": 1920, "height": 1080}
+VIEWPORT = {"width": 1280, "height": 720}

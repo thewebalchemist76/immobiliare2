@@ -6,7 +6,7 @@ COPY requirements.txt ./
 # Installa dipendenze Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Dipendenze di sistema minime per Chromium su Debian
+# Dipendenze di sistema minime per Chromium
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         libglib2.0-0 \
@@ -32,11 +32,11 @@ RUN apt-get update && \
         libasound2 \
     && rm -rf /var/lib/apt/lists/*
 
-# Installa solo il browser Chromium per Playwright
+# Installa browser Chromium per Playwright
 RUN python -m playwright install chromium
 
-# Copia sorgenti
+# Copia codice sorgente
 COPY src ./src
 
-# Entry point actor
+# Avvio actor
 CMD ["python", "-m", "src.main"]
