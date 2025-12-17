@@ -11,6 +11,7 @@
     "properties": {
       "max_items": {
         "title": "Max pagine",
+        "description": "Numero massimo di pagine risultati da scansionare",
         "type": "integer",
         "default": 1,
         "minimum": 1,
@@ -18,12 +19,14 @@
       },
       "municipality": {
         "title": "Città/Comune",
+        "description": "Comune o città da cercare (es. Chieti)",
         "type": "string",
         "default": "Chieti",
         "editor": "textfield"
       },
       "operation": {
         "title": "Operazione",
+        "description": "Tipo di operazione: vendita o affitto",
         "type": "string",
         "default": "vendita",
         "enum": ["vendita", "affitto"],
@@ -31,6 +34,7 @@
       },
       "min_price": {
         "title": "Prezzo minimo (€)",
+        "description": "Prezzo minimo dell'immobile in euro",
         "type": "integer",
         "default": 50000,
         "minimum": 0,
@@ -38,6 +42,7 @@
       },
       "max_price": {
         "title": "Prezzo massimo (€)",
+        "description": "Prezzo massimo dell'immobile in euro",
         "type": "integer",
         "default": 80000,
         "minimum": 0,
@@ -45,6 +50,7 @@
       },
       "min_size": {
         "title": "Superficie minima (m²)",
+        "description": "Superficie minima in metri quadri",
         "type": "integer",
         "default": 0,
         "minimum": 0,
@@ -52,6 +58,7 @@
       },
       "max_size": {
         "title": "Superficie massima (m²)",
+        "description": "Superficie massima in metri quadri",
         "type": "integer",
         "default": 0,
         "minimum": 0,
@@ -59,6 +66,7 @@
       },
       "min_rooms": {
         "title": "Locali minimi",
+        "description": "Numero minimo di locali",
         "type": "integer",
         "default": 0,
         "minimum": 0,
@@ -66,6 +74,7 @@
       },
       "max_rooms": {
         "title": "Locali massimi",
+        "description": "Numero massimo di locali",
         "type": "integer",
         "default": 0,
         "minimum": 0,
@@ -73,6 +82,7 @@
       },
       "bathrooms": {
         "title": "Bagni",
+        "description": "Numero di bagni",
         "type": "integer",
         "default": 0,
         "minimum": 0,
@@ -80,84 +90,98 @@
       },
       "property_condition": {
         "title": "Stato immobile",
+        "description": "Stato dell'immobile (es. nuovo, buono, indifferente)",
         "type": "string",
         "default": "Indifferente",
         "editor": "select"
       },
       "floor": {
         "title": "Piano",
+        "description": "Piano dell'immobile (es. terra, ultimo, indifferente)",
         "type": "string",
         "default": "Indifferente",
         "editor": "select"
       },
       "garage": {
         "title": "Garage/Posto auto",
+        "description": "Tipo di garage o posto auto",
         "type": "string",
         "default": "Indifferente",
         "editor": "select"
       },
       "heating": {
         "title": "Riscaldamento",
+        "description": "Tipo di riscaldamento (es. autonomo, centralizzato)",
         "type": "string",
         "default": "Indifferente",
         "editor": "select"
       },
       "garden": {
         "title": "Giardino",
+        "description": "Tipo di giardino (es. privato, comune, indifferente)",
         "type": "string",
         "default": "Indifferente",
         "editor": "select"
       },
       "terrace": {
         "title": "Terrazzo",
+        "description": "Solo immobili con terrazzo",
         "type": "boolean",
         "default": false,
         "editor": "checkbox"
       },
       "balcony": {
         "title": "Balcone",
+        "description": "Solo immobili con balcone",
         "type": "boolean",
         "default": false,
         "editor": "checkbox"
       },
       "lift": {
         "title": "Ascensore",
+        "description": "Solo immobili con ascensore",
         "type": "boolean",
         "default": false,
         "editor": "checkbox"
       },
       "furnished": {
         "title": "Arredato",
+        "description": "Solo immobili arredati",
         "type": "boolean",
         "default": false,
         "editor": "checkbox"
       },
       "cellar": {
         "title": "Cantina",
+        "description": "Solo immobili con cantina",
         "type": "boolean",
         "default": false,
         "editor": "checkbox"
       },
       "pool": {
         "title": "Piscina",
+        "description": "Solo immobili con piscina",
         "type": "boolean",
         "default": false,
         "editor": "checkbox"
       },
       "exclude_auctions": {
         "title": "Escludi aste",
+        "description": "Escludi annunci relativi ad aste",
         "type": "boolean",
         "default": false,
         "editor": "checkbox"
       },
       "virtual_tour": {
         "title": "Virtual tour",
+        "description": "Solo annunci con virtual tour",
         "type": "boolean",
         "default": false,
         "editor": "checkbox"
       },
       "keywords": {
         "title": "Parole chiave",
+        "description": "Parole chiave da cercare nell'annuncio",
         "type": "string",
         "default": "",
         "editor": "textfield"
