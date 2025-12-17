@@ -6,6 +6,7 @@
   "buildTag": "latest",
   "input": {
     "title": "Immobiliare.it scraper input",
+    "description": "Filtri di ricerca per gli annunci su Immobiliare.it",
     "type": "object",
     "schemaVersion": 1,
     "properties": {
@@ -30,7 +31,8 @@
         "type": "string",
         "default": "vendita",
         "enum": ["vendita", "affitto"],
-        "editor": "select"
+        "editor": "select",
+        "enumSuggestedValues": ["vendita", "affitto"]
       },
       "min_price": {
         "title": "Prezzo minimo (€)",
@@ -93,35 +95,64 @@
         "description": "Stato dell'immobile (es. nuovo, buono, indifferente)",
         "type": "string",
         "default": "Indifferente",
-        "editor": "select"
+        "editor": "select",
+        "enumSuggestedValues": [
+          "Indifferente",
+          "nuovo",
+          "ottimo",
+          "buono",
+          "da ristrutturare"
+        ]
       },
       "floor": {
         "title": "Piano",
         "description": "Piano dell'immobile (es. terra, ultimo, indifferente)",
         "type": "string",
         "default": "Indifferente",
-        "editor": "select"
+        "editor": "select",
+        "enumSuggestedValues": [
+          "Indifferente",
+          "terra",
+          "intermedio",
+          "ultimo"
+        ]
       },
       "garage": {
         "title": "Garage/Posto auto",
         "description": "Tipo di garage o posto auto",
         "type": "string",
         "default": "Indifferente",
-        "editor": "select"
+        "editor": "select",
+        "enumSuggestedValues": [
+          "Indifferente",
+          "singolo",
+          "doppio",
+          "posto auto"
+        ]
       },
       "heating": {
         "title": "Riscaldamento",
         "description": "Tipo di riscaldamento (es. autonomo, centralizzato)",
         "type": "string",
         "default": "Indifferente",
-        "editor": "select"
+        "editor": "select",
+        "enumSuggestedValues": [
+          "Indifferente",
+          "autonomo",
+          "centralizzato"
+        ]
       },
       "garden": {
         "title": "Giardino",
         "description": "Tipo di giardino (es. privato, comune, indifferente)",
         "type": "string",
         "default": "Indifferente",
-        "editor": "select"
+        "editor": "select",
+        "enumSuggestedValues": [
+          "Indifferente",
+          "privato",
+          "comune"
+        ]
       },
       "terrace": {
         "title": "Terrazzo",
