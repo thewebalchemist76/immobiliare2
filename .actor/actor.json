@@ -31,8 +31,7 @@
         "type": "string",
         "default": "vendita",
         "enum": ["vendita", "affitto"],
-        "editor": "select",
-        "enumSuggestedValues": ["vendita", "affitto"]
+        "editor": "select"
       },
       "min_price": {
         "title": "Prezzo minimo (€)",
