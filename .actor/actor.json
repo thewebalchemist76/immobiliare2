@@ -1,5 +1,7 @@
 {
+  "actorSpecification": 1,
   "name": "immobiliare-scraper",
+  "title": "Immobiliare.it scraper",
   "version": "0.0.7",
   "buildTag": "latest",
   "input": {
