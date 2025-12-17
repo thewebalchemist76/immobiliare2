@@ -1,0 +1,166 @@
+{
+  "name": "immobiliare-scraper",
+  "version": "0.0.7",
+  "buildTag": "latest",
+  "input": {
+    "title": "Immobiliare.it scraper input",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+      "max_items": {
+        "title": "Max pagine",
+        "type": "integer",
+        "default": 1,
+        "minimum": 1,
+        "editor": "number"
+      },
+      "municipality": {
+        "title": "Città/Comune",
+        "type": "string",
+        "default": "Chieti",
+        "editor": "textfield"
+      },
+      "operation": {
+        "title": "Operazione",
+        "type": "string",
+        "default": "vendita",
+        "enum": ["vendita", "affitto"],
+        "editor": "select"
+      },
+      "min_price": {
+        "title": "Prezzo minimo (€)",
+        "type": "integer",
+        "default": 50000,
+        "minimum": 0,
+        "editor": "number"
+      },
+      "max_price": {
+        "title": "Prezzo massimo (€)",
+        "type": "integer",
+        "default": 80000,
+        "minimum": 0,
+        "editor": "number"
+      },
+      "min_size": {
+        "title": "Superficie minima (m²)",
+        "type": "integer",
+        "default": 0,
+        "minimum": 0,
+        "editor": "number"
+      },
+      "max_size": {
+        "title": "Superficie massima (m²)",
+        "type": "integer",
+        "default": 0,
+        "minimum": 0,
+        "editor": "number"
+      },
+      "min_rooms": {
+        "title": "Locali minimi",
+        "type": "integer",
+        "default": 0,
+        "minimum": 0,
+        "editor": "number"
+      },
+      "max_rooms": {
+        "title": "Locali massimi",
+        "type": "integer",
+        "default": 0,
+        "minimum": 0,
+        "editor": "number"
+      },
+      "bathrooms": {
+        "title": "Bagni",
+        "type": "integer",
+        "default": 0,
+        "minimum": 0,
+        "editor": "number"
+      },
+      "property_condition": {
+        "title": "Stato immobile",
+        "type": "string",
+        "default": "Indifferente",
+        "editor": "select"
+      },
+      "floor": {
+        "title": "Piano",
+        "type": "string",
+        "default": "Indifferente",
+        "editor": "select"
+      },
+      "garage": {
+        "title": "Garage/Posto auto",
+        "type": "string",
+        "default": "Indifferente",
+        "editor": "select"
+      },
+      "heating": {
+        "title": "Riscaldamento",
+        "type": "string",
+        "default": "Indifferente",
+        "editor": "select"
+      },
+      "garden": {
+        "title": "Giardino",
+        "type": "string",
+        "default": "Indifferente",
+        "editor": "select"
+      },
+      "terrace": {
+        "title": "Terrazzo",
+        "type": "boolean",
+        "default": false,
+        "editor": "checkbox"
+      },
+      "balcony": {
+        "title": "Balcone",
+        "type": "boolean",
+        "default": false,
+        "editor": "checkbox"
+      },
+      "lift": {
+        "title": "Ascensore",
+        "type": "boolean",
+        "default": false,
+        "editor": "checkbox"
+      },
+      "furnished": {
+        "title": "Arredato",
+        "type": "boolean",
+        "default": false,
+        "editor": "checkbox"
+      },
+      "cellar": {
+        "title": "Cantina",
+        "type": "boolean",
+        "default": false,
+        "editor": "checkbox"
+      },
+      "pool": {
+        "title": "Piscina",
+        "type": "boolean",
+        "default": false,
+        "editor": "checkbox"
+      },
+      "exclude_auctions": {
+        "title": "Escludi aste",
+        "type": "boolean",
+        "default": false,
+        "editor": "checkbox"
+      },
+      "virtual_tour": {
+        "title": "Virtual tour",
+        "type": "boolean",
+        "default": false,
+        "editor": "checkbox"
+      },
+      "keywords": {
+        "title": "Parole chiave",
+        "type": "string",
+        "default": "",
+        "editor": "textfield"
+      }
+    },
+    "required": []
+  }
+}

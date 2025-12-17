@@ -3,27 +3,46 @@ from apify import Actor
 from src.scraper import ImmobiliareScraper
 
 
+async def main() -> None:
+    async with Actor:
+        actor_input = await Actor.get_input() or {}
 
+        # Mappa uno-a-uno con lo schema in .actor/actor.json
+        filters = {
+            "municipality": actor_input.get("municipality", "Chieti"),
+            "operation": actor_input.get("operation", "vendita"),
+            "min_price": actor_input.get("min_price"),
+            "max_price": actor_input.get("max_price"),
+            "min_size": actor_input.get("min_size"),
+            "max_size": actor_input.get("max_size"),
+            "min_rooms": actor_input.get("min_rooms"),
+            "max_rooms": actor_input.get("max_rooms"),
+            "bathrooms": actor_input.get("bathrooms"),
+            "property_condition": actor_input.get("property_condition"),
+            "floor": actor_input.get("floor"),
+            "garage": actor_input.get("garage"),
+            "heating": actor_input.get("heating"),
+            "garden": actor_input.get("garden"),
+            "terrace": actor_input.get("terrace", False),
+            "balcony": actor_input.get("balcony", False),
+            "lift": actor_input.get("lift", False),
+            "furnished": actor_input.get("furnished", False),
+            "cellar": actor_input.get("cellar", False),
+            "pool": actor_input.get("pool", False),
+            "exclude_auctions": actor_input.get("exclude_auctions", False),
+            "virtual_tour": actor_input.get("virtual_tour", False),
+            "keywords": actor_input.get("keywords"),
+        }
 
-async def main():
-async with Actor:
-actor_input = await Actor.get_input() or {}
+        max_pages = actor_input.get("max_items", 1)
 
+        Actor.log.info(f"Starting scraper with filters: {filters}")
 
-filters = {
-"municipality": actor_input.get("municipality", "roma"),
-"operation": actor_input.get("operation", "vendita"),
-}
+        scraper = ImmobiliareScraper(filters)
+        await scraper.run(max_pages=max_pages)
 
-
-max_pages = actor_input.get("max_pages", 3)
-
-
-scraper = ImmobiliareScraper(filters)
-await scraper.run(max_pages=max_pages)
-
-
+        Actor.log.info("Actor finished successfully!")
 
 
 if __name__ == "__main__":
-asyncio.run(main())
+    asyncio.run(main())
